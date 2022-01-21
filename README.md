@@ -21,8 +21,6 @@ cmd.exe ( admin elevated)
 
 **3) Postgres online connection detail  - https://www.elephantsql.com/**
 
-Create database account or use provided
-
 host: abul.db.elephantsql.com
 databaseName: fwlbsmli
 
@@ -56,12 +54,10 @@ spring.datasource.password=xxx
 
 **8) Maven build**
 
->** choco install maven
-
 >** mvn clean install
 
 
-**9) Run tests - JUnit**
+**9) Run tests**
 
 EndPointTestsHNBServiceOnline - testing CRUD with live HNB connection
 

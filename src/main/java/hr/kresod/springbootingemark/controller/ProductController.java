@@ -13,29 +13,32 @@ import hr.kresod.springbootingemark.service.ProductService;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    private ProductService productService;
+	private ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
+	public ProductController(ProductService productService) {
+		this.productService = productService;
+	}
 
-    @PostMapping("/create")
-    public ProductCreateResponse saveProduct(@RequestBody ProductIn productIn) {
+	@PostMapping("/create")
+	public ProductCreateResponse saveProduct(@RequestBody ProductIn productIn) {
 
-        ProductCreateResponse productCreateResponse = productService.createProduct(productIn);
+		ProductCreateResponse productCreateResponse = productService.createProduct(productIn);
 
-        return productCreateResponse;
-    }
-    
-    @PostMapping("/update")
-    public ProductCreateResponse updateProduct(@RequestBody ProductIn productIn) {
+		return productCreateResponse;
+	}
 
-        ProductCreateResponse productCreateResponse = productService.updateProduct(productIn);
+	@PostMapping("/update")
+	public ProductCreateResponse updateProduct(@RequestBody ProductIn productIn) {
 
-        return productCreateResponse;
-    }
+		ProductCreateResponse productCreateResponse = productService.updateProduct(productIn);
+
+		return productCreateResponse;
+	}
 
 }
+
+
+
 
 
 

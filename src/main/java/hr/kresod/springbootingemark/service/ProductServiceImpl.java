@@ -6,13 +6,15 @@ import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
-import hr.kresod.springbooteingemark.exceptions.MyCustomRollbackException;
 import hr.kresod.springbootingemark.dao.ProductRepository;
 import hr.kresod.springbootingemark.dto.ProductCreateResponse;
 import hr.kresod.springbootingemark.dto.ProductIn;
 import hr.kresod.springbootingemark.entity.Product;
+import hr.kresod.springbootingemark.exception.MyCustomRollbackException;
 
 
 /*
@@ -34,12 +36,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional(rollbackOn = {MyCustomRollbackException.class})
     public ProductCreateResponse createProduct(ProductIn inProduct) {
 
     	//Validate input data
     	if(!checkValidProductIn(inProduct, false)) {
-    		throw new MyCustomRollbackException("Product is not valid");
+    		throw new MyCustomRollbackException("Validation checks didn't pass");
     	}
     	
         // Create product from input data && convert price to EUR
@@ -66,7 +67,7 @@ public class ProductServiceImpl implements ProductService {
 
     	//Validate input data
     	if(!checkValidProductIn(inProduct,true)) {
-    		throw new MyCustomRollbackException("Product is not valid");
+    		 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Input Product is not valid");
     	}
     	
     	Product product = productRepository.findByCode(inProduct.getCode());

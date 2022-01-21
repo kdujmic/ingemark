@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import hr.kresod.springbooteingemark.exceptions.MyCustomRollbackException;
 import hr.kresod.springbootingemark.dto.HNBTecaj;
+import hr.kresod.springbootingemark.exception.MyCustomRollbackException;
 import hr.kresod.springbootingemark.utils.BigDecimalConverter;
 import reactor.core.publisher.Mono;
 
