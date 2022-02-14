@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class EndPointTestsHNBServiceOnline {
+public class EndPointTestsHNBServiceOnlineTest {
 
 	String baseUrl ="http://localhost:";
 	 

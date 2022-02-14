@@ -29,7 +29,7 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(
         locations = "classpath:offline-application.properties") // Override hnb.api.base URL inside .properties file
-public class EndPointTestsHNBServiceOffline {
+public class EndPointTestsHNBServiceOfflineTest {
 
 	String baseUrl ="http://localhost:";
 	 

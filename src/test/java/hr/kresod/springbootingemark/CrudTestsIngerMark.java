@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import hr.kresod.springbootingemark.dto.ProductCreateResponse;
@@ -52,9 +53,16 @@ public class CrudTestsIngerMark {
 			
 			//Check is deleted
 			try {
-				restTemplate.getForObject(url + "/" + entity.getBody().getProductId(), Product[].class);
-			} catch (HttpClientErrorException e) {
-				assertEquals(e.getStatusCode(),HttpStatus.NOT_FOUND);
+				restTemplate.getForObject(url + "/" + entity.getBody().getProductId(), Product.class);
+			} catch (Exception e) {
+				
+				if(e instanceof HttpServerErrorException) {
+					assertEquals(((HttpServerErrorException)e).getStatusCode(),HttpStatus.INTERNAL_SERVER_ERROR);
+				} else {
+					throw e;
+				}
+				
+				
 			}
 			
 			
